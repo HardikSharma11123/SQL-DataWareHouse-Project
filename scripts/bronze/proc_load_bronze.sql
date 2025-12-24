@@ -66,7 +66,7 @@ BEGIN
 		TRUNCATE TABLE bronze.erp_loc_a101;
 		PRINT '>> Inserting Data Into: bronze.erp_loc_a101';
 		BULK INSERT bronze.erp_loc_a101
-		FROM 'D:\sqlprojw\sql-data-warehouse-project\datasets\source_erp\CUST_AZ12.csv'
+		FROM 'D:\sqlprojw\sql-data-warehouse-project\datasets\source_erp\LOC_A101.csv'
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -81,7 +81,7 @@ BEGIN
 		TRUNCATE TABLE bronze.erp_cust_az12;
 		PRINT '>> Inserting Data Into: bronze.erp_cust_az12';
 		BULK INSERT bronze.erp_cust_az12
-		FROM 'D:\sqlprojw\sql-data-warehouse-project\datasets\source_erp\LOC_A101.csv'
+		FROM 'D:\sqlprojw\sql-data-warehouse-project\datasets\source_erp\CUST_AZ12.csv'
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
