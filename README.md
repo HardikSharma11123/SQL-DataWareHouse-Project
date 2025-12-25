@@ -148,28 +148,27 @@ GO
 3. **Execute scripts in order**
 
 ```sql
--- Step 1: Bronze Layer Setup
-:r scripts/bronze/01_create_bronze_tables.sql
-:r scripts/bronze/02_load_customers.sql
-:r scripts/bronze/03_load_orders.sql
+-- Step 1: Run the following
+:r scripts/init_database.sql
 
--- Step 2: Silver Layer Setup
-:r scripts/silver/01_create_silver_tables.sql
-:r scripts/silver/02_transform_customers.sql
-:r scripts/silver/03_transform_orders.sql
+-- Step 2: Bronze Layer Setup
+:r scripts/bronze/ddl_bronze.sql
+:r scripts/bronze/proc_load_bronze.sql
 
--- Step 3: Gold Layer Setup
-:r scripts/gold/01_create_dimensions.sql
-:r scripts/gold/02_create_facts.sql
-:r scripts/gold/03_create_analytics_views.sql
+-- Step 3: Silver Layer Setup
+:r scripts/silver/ddl_silver.sql
+:r scripts/silver/proc_load_silver.sql
+
+-- Step 4: Gold Layer Setup
+:r scripts/gold/ddl_gold.sql
 ```
 
 4. **Verify installation**
 ```sql
 -- Run test queries
-SELECT COUNT(*) AS BronzeRowCount FROM Bronze.Raw_Customers;
-SELECT COUNT(*) AS SilverRowCount FROM Silver.Cleaned_Customers;
-SELECT COUNT(*) AS GoldRowCount FROM Gold.Dim_Customer;
+SELECT COUNT(*) AS BronzeRowCount FROM bronze.crm_cust_info;
+SELECT COUNT(*) AS SilverRowCount FROM silver.crm_cust_info;
+SELECT COUNT(*) AS GoldRowCount FROM gold.crm_cust_info;
 ```
 
 ---
